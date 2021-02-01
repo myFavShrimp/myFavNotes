@@ -1,0 +1,187 @@
+QMenu {
+    background-color: #141517;
+    color: white;
+    margin: 2 2 2 2;
+    border-radius: 5;
+}
+
+QMenu::item {
+    padding:3px 10px;
+    margin: 3px 5px;
+}
+
+QMenu::item:selected {
+    background-color: #212326;
+    border-radius: 5;
+}
+
+QMainWindow {
+    background-color: #202225;
+}
+
+QPushButton {
+    border: 0;
+    background-color: #202225;
+    color: white;
+    padding: 5 5 5 5;
+    border-radius: 5;
+}
+
+#pushButtonMenu {
+    padding: 4 4 4 4;
+    border-radius: 5;
+    margin: 0;
+}
+
+QPushButton:disabled {
+    color: gray;
+}
+
+QPushButton:pressed {
+    border: 1 solid #757575;
+}
+
+QLabel {
+    color: white;
+}
+
+QListView {
+    background-color: #202225;
+    color: white;
+    border: 0;
+    outline: 0;
+}
+
+QListView::item {
+    margin: 5 5 5 5;
+    background-color: #36393f;
+    border-radius: 5 5 5 5;
+}
+
+QListView::item:selected {
+    color: white;
+    border: 1 solid #757575;
+}
+
+QListView::item:selected:active {
+}
+
+QListView::item:selected:active {
+}
+
+QLineEdit {
+    background-color: #202225;
+    border: 0;
+    color: white;
+}
+
+NoteListView {
+    background-color: #292b2f;
+    background-clip: padding;
+}
+
+QScrollBar:vertical {
+    width: 5px;
+    border: none;
+}
+
+QScrollBar::handle:vertical {
+    background: #36393f;
+    width: 7px;
+    border-radius: 3px 3px 3px 3px;
+}
+
+QScrollBar::sub-page:vertical {
+    background: #202225;
+}
+
+QScrollBar::add-page:vertical {
+    background: #202225;
+}
+
+QScrollBar::sub-line:vertical {
+    background: #202225;
+}
+
+QScrollBar::add-line:vertical {
+    background: #202225;
+}
+
+QScrollBar {
+    width: 10px;
+    border-radius: 3px 3px 3px 3px;
+}
+
+#pushButtonAddNote {
+    border-radius: 10 10 10 10;
+    background-color: #36393f;
+    margin: 5 5 5 5;
+}
+
+#pushButtonAddNote:pressed {
+    border-radius: 20 20 20 20;
+    background-color: #36393f;
+}
+
+#plainTextEditNote {
+    border: 0;
+    border-radius: 5 5 5 5;
+    margin: 2 2 2 2;
+    padding: 0 0 2 0;
+}
+
+#plainTextEditNote:focus {
+    border: 1 solid #757575;
+}
+
+#labelTimestamp {
+    border-radius: 5 5 5 5;
+}
+
+QDialog {
+    background-color: #292b2f;
+}
+
+#lineEditListName {
+    padding: 5 5 5 5;
+    margin: 5 5 5 5;
+}
+
+#buttonBox *[text="OK"] {
+    width: 50;
+    padding: 5 5 5 5;
+    margin: 5 5 5 5;
+    border-radius: 5;
+}
+
+#buttonBox *[text="Cancel"] {
+    width: 50;
+    padding: 5 5 5 5;
+    margin: 5 5 5 5;
+    border-radius: 5;
+}
+
+#pushButtonChoosePath {
+    width: 50;
+    padding: 5;
+    margin: 5;
+    border-radius: 5;
+}
+
+QMenu:selected {
+    background-color: #212326;
+}
+
+#pushButtonCopyNote {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    background-color: transparent;
+    border-radius: 3;
+}
+
+#pushButtonDeleteNote {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    background-color: transparent;
+    border-radius: 3;
+}

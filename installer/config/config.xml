@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>myFavNotes</Name>
+    <Version>1.0.0</Version>
+    <Title>myFavNotes Installer</Title>
+    <Publisher>myFavShrimp</Publisher>
+    <StartMenuDir>myFavNotes</StartMenuDir>
+    <TargetDir>@HomeDir@/myFavNotes</TargetDir>
+</Installer>

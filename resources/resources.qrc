@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>style.qss</file>
+        <file>copy.svg</file>
+        <file>trash.svg</file>
+        <file>edit.svg</file>
+        <file>icon.ico</file>
+    </qresource>
+</RCC>
