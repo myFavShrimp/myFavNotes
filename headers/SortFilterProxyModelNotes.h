@@ -16,6 +16,9 @@ public:
 
     int getNoteListFilter() const;
 
+signals:
+    void filterChanged();
+
 public slots:
     void setNoteListFilter(const int &id);
     void setNoteContentFilter(const QString &content);

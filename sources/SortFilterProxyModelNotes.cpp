@@ -59,6 +59,8 @@ void SortFilterProxyModelNotes::setNoteListFilter(const int &id)
     beginResetModel();
     noteListFilter = id+1;
     endResetModel();
+
+    emit filterChanged();
 }
 
 void SortFilterProxyModelNotes::setNoteContentFilter(const QString &content)
@@ -66,10 +68,11 @@ void SortFilterProxyModelNotes::setNoteContentFilter(const QString &content)
     beginResetModel();
     noteContentFilter = content;
     endResetModel();
+
+    emit filterChanged();
 }
 
 int SortFilterProxyModelNotes::getNoteListFilter() const
 {
     return noteListFilter;
 }
-

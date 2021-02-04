@@ -21,6 +21,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void resizeEvent(QResizeEvent *event) override;
+
 private slots:
     // menu
     void on_pushButtonMenu_clicked();
@@ -38,6 +40,8 @@ private slots:
     void on_pushButtonAddNote_clicked();
 
     void removeNoteList(const QModelIndex &index);
+    void onNoteDeleted();
+    void onNoteFilterChanged();
 
 signals:
     void changeNoteListFilter(int id);
@@ -51,6 +55,8 @@ private:
 
     QSortFilterProxyModel *proxyModelNoteLists;
     SideBarDelegate *sideBarDelegate;
+
+    void layOutNotes();
 
     // db
     QSqlDatabase currentDb;

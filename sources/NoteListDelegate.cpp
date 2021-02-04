@@ -49,6 +49,7 @@ void NoteListDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, 
     if (/*(!note->stillEditing() && value.isEmpty()) ||*/ deleteNoteRow) { // causes unselectable notes
         model->removeRow(index.row(), index.parent());
         deleteNoteRow = false;
+        emit noteDeleted();
         return;
     }
 
@@ -91,7 +92,7 @@ QSize NoteListDelegate::sizeHint(const QStyleOptionViewItem &option, const QMode
 {
     Q_UNUSED(option)
     Q_UNUSED(index)
-    return QSize(0, 92);
+    return option.rect.size();
 }
 
 void NoteListDelegate::noteEdited()

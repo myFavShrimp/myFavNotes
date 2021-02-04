@@ -21,6 +21,9 @@ public:
 
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
+signals:
+    void noteDeleted() const;
+
 private slots:
     void noteEdited();
     void deleteNote();

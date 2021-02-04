@@ -19,7 +19,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     // actions
     initActions();
-
     // view
     sideBarDelegate = new SideBarDelegate(this);
     noteDelegate = new NoteListDelegate(this);
@@ -32,7 +31,12 @@ MainWindow::MainWindow(QWidget *parent)
     ui->listViewNoteList->setModel(proxyModelNotes);
     ui->listViewSideBar->setModel(proxyModelNoteLists);
 
+    ui->listViewNoteList->setResizeMode(QListView::Adjust);
+    ui->listViewNoteList->setViewMode(QListView::IconMode);
+
     connect(ui->listViewSideBar, SIGNAL(removeNoteList(QModelIndex)), this, SLOT(removeNoteList(const QModelIndex)));
+    connect(noteDelegate, SIGNAL(noteDeleted()), this, SLOT(onNoteDeleted()));
+    connect(proxyModelNotes, SIGNAL(filterChanged()), this, SLOT(onNoteFilterChanged()));
 
     proxyModelNotes->sort(3, Qt::DescendingOrder);
     proxyModelNoteLists->sort(0, Qt::DescendingOrder);
@@ -112,7 +116,6 @@ void MainWindow::loadDatabase()
         connect(this, SIGNAL(changeNoteListFilter(int)), proxyModelNotes, SLOT(setNoteListFilter(const int)));
 
     } else {
-        // TODO show error
         dbConnClose();
         QMessageBox::warning(this, "Warning", "Database couldn't be created / loaded!");
     }
@@ -146,6 +149,8 @@ void MainWindow::on_pushButtonAddNote_clicked()
 
     dbModelNotes->select();
 
+    layOutNotes();
+
     ui->listViewNoteList->scrollToTop();
 }
 
@@ -157,5 +162,42 @@ void MainWindow::removeNoteList(const QModelIndex &index)
         dbModelNotes->select();
         proxyModelNotes->setNoteListFilter(-1);
         ui->pushButtonAddNote->setDisabled(true);
+    }
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    layOutNotes();
+}
+
+void MainWindow::onNoteDeleted()
+{
+    layOutNotes();
+}
+
+void MainWindow::onNoteFilterChanged()
+{
+    layOutNotes();
+}
+
+void MainWindow::layOutNotes()
+{
+    int maximumWidth = 200;
+    int currentWidth = ui->listViewNoteList->width();
+    qDebug() << "currentWidth" << currentWidth;
+
+    if (currentWidth >= maximumWidth) { // prevent crash cause by small initial size
+        qDebug() << "laying out";
+        int horItemCount = ui->listViewNoteList->width() / maximumWidth;
+        if (proxyModelNotes->rowCount() && horItemCount > proxyModelNotes->rowCount())
+            horItemCount = proxyModelNotes->rowCount();
+        int widthPerItem  = horItemCount * maximumWidth;
+        int remainingWidth = ui->listViewNoteList->width() - widthPerItem;
+        qDebug() << "1";
+        qDebug() << maximumWidth << remainingWidth << horItemCount;
+        int itemWidth = maximumWidth + ((remainingWidth / horItemCount) - 3);
+        qDebug() << "2";
+        ui->listViewNoteList->setGridSize(QSize(itemWidth, 100));
+        qDebug() << "_________________________________________";
     }
 }

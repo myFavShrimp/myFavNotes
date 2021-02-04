@@ -13,7 +13,7 @@
   <property name="maximumSize">
    <size>
     <width>16777215</width>
-    <height>92</height>
+    <height>16777215</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -24,29 +24,29 @@
     <number>2</number>
    </property>
    <property name="leftMargin">
-    <number>0</number>
+    <number>3</number>
    </property>
    <property name="topMargin">
-    <number>0</number>
+    <number>3</number>
    </property>
    <property name="rightMargin">
-    <number>0</number>
+    <number>3</number>
    </property>
    <property name="bottomMargin">
-    <number>0</number>
+    <number>3</number>
    </property>
    <item>
     <widget class="QPlainTextEdit" name="plainTextEditNote">
      <property name="minimumSize">
       <size>
        <width>0</width>
-       <height>65</height>
+       <height>0</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>65</height>
+       <height>16777215</height>
       </size>
      </property>
      <property name="verticalScrollBarPolicy">
@@ -63,10 +63,10 @@
       <number>2</number>
      </property>
      <property name="leftMargin">
-      <number>0</number>
+      <number>2</number>
      </property>
      <property name="rightMargin">
-      <number>5</number>
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="labelTimestamp">

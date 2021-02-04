@@ -80,6 +80,10 @@ NoteListView {
     background-clip: padding;
 }
 
+NoteListView::item {
+    margin: 0 0 0 0;
+}
+
 QScrollBar:vertical {
     width: 5px;
     border: none;
