@@ -10,7 +10,7 @@ void settings::setupSettings() {
     while (settingsIterator.hasNext()) {
         settingsIterator.next();
         QVariant value = settings.value(settingsIterator.key(), settingsIterator.value());
-        saveSetting(settingsIterator.key(), settingsIterator.value());
+        saveSetting(settingsIterator.key(), value);
     }
 }
 
