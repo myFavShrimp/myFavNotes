@@ -2,7 +2,7 @@
 <Package>
     <DisplayName>myFavNotes</DisplayName>
     <Description>The famous myFavNotes application and all needed libraries.</Description>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <ReleaseDate>2021-02-01</ReleaseDate>
     <Default>true</Default>
 </Package>
