@@ -13,12 +13,13 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setupSettings();
+    settings::setupSettings();
 
     ui->pushButtonAddNote->setDisabled(true);
 
     // actions
     initActions();
+
     // view
     sideBarDelegate = new SideBarDelegate(this);
     noteDelegate = new NoteListDelegate(this);
@@ -47,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
     QString style(styleFile.readAll());
     setStyleSheet(style);
 
-    if (loadSetting("DBPath").toString().isEmpty() || !QFile(loadSetting("DBPath").toString()).exists()) {
+    if (settings::loadSetting("DBPath").toString().isEmpty() || !QFile(settings::loadSetting("DBPath").toString()).exists()) {
         openDBDialog();
     } else {
         loadDatabase();
@@ -62,7 +63,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::openDBDialog()
 {
-    QString path = loadSetting("DBPath").toString();
+    QString path = settings::loadSetting("DBPath").toString();
     DBDialog dbDialog(path, this);
 
     if (dbDialog.exec() == QDialog::Accepted) {
@@ -87,7 +88,7 @@ void MainWindow::openNoteListCreationDialog()
 
 void MainWindow::changeDatabase(const QString &path)
 {
-    saveSetting("DBPath", path);
+    settings::saveSetting("DBPath", path);
     loadDatabase();
 }
 

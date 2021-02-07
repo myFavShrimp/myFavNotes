@@ -3,11 +3,12 @@
 
 #include "NoteListDelegate.h"
 #include "SortFilterProxyModelNotes.h"
+#include "SideBarDelegate.h"
+#include "Settings.h"
 
 #include <QList>
 #include <QMainWindow>
 #include <QSqlTableModel>
-#include <headers/SideBarDelegate.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -85,22 +86,6 @@ private:
     // dialog
     void openDBDialog();
     void openNoteListCreationDialog();
-
-    // settings
-    QVariant loadSetting(const QString &key);
-    void saveSetting(const QString &key, const QVariant &value);
-    void setupSettings();
-
-    struct Setting {
-         QString name;
-         QVariant value;
-         Setting(QString name, QVariant value) : name(name), value(value)
-         {
-         }
-    };
-    QList<Setting> defaultSettings = QList<Setting>()
-            << Setting("AlwaysOnTop", false)
-            << Setting("DBPath", QString(""));
 
 };
 #endif // MAINWINDOW_H

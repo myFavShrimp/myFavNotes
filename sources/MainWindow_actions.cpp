@@ -23,7 +23,7 @@ void MainWindow::initActions()
     connect(actionAboutQt, SIGNAL(triggered()), this, SLOT(actionAboutQtHandler()));
     connect(actionQuit, SIGNAL(triggered()), this, SLOT(close()));
 
-    actionStayOnTop->setChecked(loadSetting("AlwaysOnTop").toBool());
+    actionStayOnTop->setChecked(settings::loadSetting("AlwaysOnTop").toBool());
 }
 
 void MainWindow::on_pushButtonMenu_clicked()
@@ -62,7 +62,7 @@ void MainWindow::actionStayOnTopToggledHandler(const bool &checked)
         setWindowFlags(currentFlags | Qt::X11BypassWindowManagerHint | Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint);
     } else
         setWindowFlags(currentFlags ^ (Qt::X11BypassWindowManagerHint | Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint));
-    saveSetting("AlwaysOnTop", checked);
+    settings::saveSetting("AlwaysOnTop", checked);
     show();
 }
 

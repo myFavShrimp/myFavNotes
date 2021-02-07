@@ -34,7 +34,7 @@ bool MainWindow::dbConnOpen()
 {
     qDebug() << "opening DB";
     currentDb = QSqlDatabase::addDatabase("QSQLITE");
-    currentDb.setDatabaseName(loadSetting("DBPath").toString());
+    currentDb.setDatabaseName(settings::loadSetting("DBPath").toString());
 
     if(!currentDb.open()) {
         return false;

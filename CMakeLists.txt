@@ -27,7 +27,6 @@ set(PROJECT_SOURCES
         sources/main.cpp
         sources/MainWindow.cpp
         sources/MainWindow_database.cpp
-        sources/MainWindow_settings.cpp
         sources/MainWindow_actions.cpp
         sources/NoteWidget.cpp
         sources/TextInputDialog.cpp
@@ -37,7 +36,7 @@ set(PROJECT_SOURCES
         sources/NoteListDelegate.cpp
         sources/SideBarDelegate.cpp
         sources/SideBarListView.cpp
-)
+        sources/Settings.cpp)
 
 set(PROJECT_HEADERS
         headers/MainWindow.h
@@ -49,7 +48,7 @@ set(PROJECT_HEADERS
         headers/NoteListDelegate.h
         headers/SideBarDelegate.h
         headers/SideBarListView.h
-)
+        headers/Settings.h)
 
 set(PROJECT_FORMS
         forms/MainWindow.ui
