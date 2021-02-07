@@ -1,7 +1,7 @@
-#include "headers/MainWindow.h"
+#include "MainWindow.h"
 #include "./ui_MainWindow.h"
-#include "headers/TextInputDialog.h"
-#include "headers/DBDialog.h"
+#include "TextInputDialog.h"
+#include "DBDialog.h"
 
 #include <QSqlRecord>
 #include <QSqlError>
@@ -185,20 +185,18 @@ void MainWindow::layOutNotes()
 {
     int maximumWidth = 200;
     int currentWidth = ui->listViewNoteList->width();
-    qDebug() << "currentWidth" << currentWidth;
+    int currentItemCount = proxyModelNotes->rowCount();
 
-    if (currentWidth >= maximumWidth) { // prevent crash cause by small initial size
-        qDebug() << "laying out";
-        int horItemCount = ui->listViewNoteList->width() / maximumWidth;
-        if (proxyModelNotes->rowCount() && horItemCount > proxyModelNotes->rowCount())
-            horItemCount = proxyModelNotes->rowCount();
+    if (currentWidth >= maximumWidth) { // prevent crash caused by small initial size
+        int horItemCount = currentWidth / maximumWidth;
+
+        if (currentItemCount && horItemCount > currentItemCount)
+            horItemCount = currentItemCount;
+
         int widthPerItem  = horItemCount * maximumWidth;
-        int remainingWidth = ui->listViewNoteList->width() - widthPerItem;
-        qDebug() << "1";
-        qDebug() << maximumWidth << remainingWidth << horItemCount;
+        int remainingWidth = currentWidth - widthPerItem;
         int itemWidth = maximumWidth + ((remainingWidth / horItemCount) - 3);
-        qDebug() << "2";
-        ui->listViewNoteList->setGridSize(QSize(itemWidth, 100));
-        qDebug() << "_________________________________________";
+        if (!(ui->listViewNoteList->gridSize() == QSize(itemWidth, 100)))
+            ui->listViewNoteList->setGridSize(QSize(itemWidth, 100));
     }
 }

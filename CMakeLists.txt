@@ -36,7 +36,8 @@ set(PROJECT_SOURCES
         sources/NoteListDelegate.cpp
         sources/SideBarDelegate.cpp
         sources/SideBarListView.cpp
-        sources/Settings.cpp)
+        sources/Settings.cpp
+)
 
 set(PROJECT_HEADERS
         headers/MainWindow.h
@@ -48,7 +49,7 @@ set(PROJECT_HEADERS
         headers/NoteListDelegate.h
         headers/SideBarDelegate.h
         headers/SideBarListView.h
-        headers/Settings.h)
+)
 
 set(PROJECT_FORMS
         forms/MainWindow.ui
