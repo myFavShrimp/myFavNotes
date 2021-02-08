@@ -10,7 +10,6 @@ NoteWidget::NoteWidget(QWidget *parent) :
     ui(new Ui::NoteWidget)
 {
     ui->setupUi(this);
-//    setFocusProxy(ui->plainTextEditNote);
 
     updateTimestamp();
 

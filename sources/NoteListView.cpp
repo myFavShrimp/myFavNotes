@@ -4,8 +4,6 @@
 
 NoteListView::NoteListView(QWidget *parent) : QListView(parent)
 {
-    qDebug() << spacing();
-    setSpacing(2);
     setMouseTracking(true);
 }
 

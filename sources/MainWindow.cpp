@@ -48,7 +48,8 @@ MainWindow::MainWindow(QWidget *parent)
     QString style(styleFile.readAll());
     setStyleSheet(style);
 
-    if (settings::loadSetting("DBPath").toString().isEmpty() || !QFile(settings::loadSetting("DBPath").toString()).exists()) {
+    if (settings::loadSetting(settings::Setting::DBPath).toString().isEmpty()
+            || !QFile(settings::loadSetting(settings::Setting::DBPath).toString()).exists()) {
         openDBDialog();
     } else {
         loadDatabase();
@@ -63,7 +64,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::openDBDialog()
 {
-    QString path = settings::loadSetting("DBPath").toString();
+    QString path = settings::loadSetting(settings::Setting::DBPath).toString();
     DBDialog dbDialog(path, this);
 
     if (dbDialog.exec() == QDialog::Accepted) {
@@ -88,7 +89,7 @@ void MainWindow::openNoteListCreationDialog()
 
 void MainWindow::changeDatabase(const QString &path)
 {
-    settings::saveSetting("DBPath", path);
+    settings::saveSetting(settings::Setting::DBPath, path);
     loadDatabase();
 }
 

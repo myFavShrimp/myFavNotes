@@ -4,13 +4,19 @@
 #include <QSettings>
 
 namespace settings {
-    QHash<QString, QVariant> getDefaultSettings();
+    enum Setting {
+        AlwaysOnTop, DBPath
+    };
+
+    QString settingName(Setting num);
+
+    QHash<settings::Setting, QVariant> getDefaultSettings();
 
     QSettings getAppSettings();
 
     void setupSettings();
-    void saveSetting(const QString &key, const QVariant &value);
-    QVariant loadSetting(const QString &key);
+    void saveSetting(const Setting &key, const QVariant &value);
+    QVariant loadSetting(const Setting &key);
 
 };
 

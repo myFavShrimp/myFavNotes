@@ -1,40 +1,54 @@
 #include <Settings.h>
 
-void settings::setupSettings() {
+QString settings::settingName(settings::Setting num)
+{
+    QStringList settings = {
+            "AlwaysOnTop",
+            "DBPath"
+    };
+    return settings[num];
+}
+
+void settings::setupSettings()
+{
     QSettings settings = getAppSettings();
     settings.beginGroup("Settings");
 
-    QHash<QString, QVariant> defaultSettings = getDefaultSettings();
-    QHashIterator<QString, QVariant> settingsIterator(defaultSettings);
+    QHash<settings::Setting, QVariant> defaultSettings = getDefaultSettings();
+    QHashIterator<settings::Setting, QVariant> settingsIterator(defaultSettings);
 
     while (settingsIterator.hasNext()) {
         settingsIterator.next();
-        QVariant value = settings.value(settingsIterator.key(), settingsIterator.value());
+        QVariant value = settings.value(settingName(settingsIterator.key()), settingsIterator.value());
         saveSetting(settingsIterator.key(), value);
     }
 }
 
-void settings::saveSetting(const QString &key, const QVariant &value) {
+void settings::saveSetting(const Setting &key, const QVariant &value)
+{
     QSettings settings = getAppSettings();
     settings.beginGroup("Settings");
-    settings.setValue(key, value);
+    settings.setValue(settingName(key), value);
 }
 
-QVariant settings::loadSetting(const QString &key) {
+QVariant settings::loadSetting(const Setting &key)
+{
     QSettings settings = getAppSettings();
     settings.beginGroup("Settings");
-    return settings.value(key);
+    return settings.value(settingName(key));
 }
 
-QSettings settings::getAppSettings() {
+QSettings settings::getAppSettings()
+{
     return QSettings(QSettings::IniFormat, QSettings::UserScope, "myFavNotes", "myFavNotes");
 }
 
-QHash<QString, QVariant> settings::getDefaultSettings() {
-    QHash<QString, QVariant> defaultSettings;
+QHash<settings::Setting, QVariant> settings::getDefaultSettings()
+{
+    QHash<settings::Setting, QVariant> defaultSettings;
 
-    defaultSettings.insert("AlwaysOnTop", false);
-    defaultSettings.insert("DBPath", "");
+    defaultSettings.insert(Setting::AlwaysOnTop, false);
+    defaultSettings.insert(Setting::DBPath, "");
 
     return defaultSettings;
 }

@@ -34,7 +34,7 @@ bool MainWindow::dbConnOpen()
 {
     qDebug() << "opening DB";
     currentDb = QSqlDatabase::addDatabase("QSQLITE");
-    currentDb.setDatabaseName(settings::loadSetting("DBPath").toString());
+    currentDb.setDatabaseName(settings::loadSetting(settings::Setting::DBPath).toString());
 
     if(!currentDb.open()) {
         return false;
@@ -61,6 +61,5 @@ bool MainWindow::removeListsNotes(const int listId)
     QSqlQuery query;
     query.prepare("DELETE FROM 'myfav_notes' WHERE list_id=:id");
     query.bindValue(":id", listId);
-    qDebug() << query.exec();
     return true;
 }
