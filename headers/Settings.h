@@ -5,7 +5,7 @@
 
 namespace settings {
     enum Setting {
-        AlwaysOnTop, DBPath
+        AlwaysOnTop, DBPath, TimestampFormat
     };
 
     QString settingName(Setting num);

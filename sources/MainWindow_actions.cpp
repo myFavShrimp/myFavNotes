@@ -10,6 +10,7 @@ void MainWindow::initActions()
     actionAddNoteList = new QAction("Add Note List", this);
     actionNewLoadDatabase = new QAction("Create New / Load Database", this);
     actionStayOnTop = new QAction("Always On Top", this);
+    actionChangeTimestampFormat = new QAction("Change Timestamp Format", this);
     actionAbout = new QAction("About", this);
     actionAboutQt = new QAction("About Qt", this);
     actionQuit = new QAction("Quit", this);
@@ -19,6 +20,7 @@ void MainWindow::initActions()
     connect(actionAddNoteList, SIGNAL(triggered()), this, SLOT(actionAddNoteListHandler()));
     connect(actionNewLoadDatabase, SIGNAL(triggered()), this, SLOT(actionNewLoadDatabaseHandler()));
     connect(actionStayOnTop, SIGNAL(toggled(bool)), this, SLOT(actionStayOnTopToggledHandler(const bool)));
+    connect(actionChangeTimestampFormat, SIGNAL(triggered()), this, SLOT(actionChangeTimestampFormatHandler()));
     connect(actionAbout, SIGNAL(triggered()), this, SLOT(actionAboutHandler()));
     connect(actionAboutQt, SIGNAL(triggered()), this, SLOT(actionAboutQtHandler()));
     connect(actionQuit, SIGNAL(triggered()), this, SLOT(close()));
@@ -36,6 +38,7 @@ void MainWindow::on_pushButtonMenu_clicked()
     contextMenu.addAction(actionNewLoadDatabase);
     contextMenu.addSeparator();
     contextMenu.addAction(actionStayOnTop);
+    contextMenu.addAction(actionChangeTimestampFormat);
     contextMenu.addSeparator();
     contextMenu.addAction(actionAbout);
     contextMenu.addAction(actionAboutQt);
@@ -66,6 +69,11 @@ void MainWindow::actionStayOnTopToggledHandler(const bool &checked)
     settings::saveSetting(settings::Setting::AlwaysOnTop, checked);
     if (windowVisible) // prevent crash caused by showing the application before it's fully initialized at startup
         show();
+}
+
+void MainWindow::actionChangeTimestampFormatHandler()
+{
+    openChangeTimestampFormatDialog();
 }
 
 void MainWindow::actionAboutHandler() {

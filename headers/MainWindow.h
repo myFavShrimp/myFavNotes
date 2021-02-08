@@ -31,6 +31,7 @@ private slots:
     void actionAddNoteListHandler();
     void actionNewLoadDatabaseHandler();
     void actionStayOnTopToggledHandler(const bool &checked);
+    void actionChangeTimestampFormatHandler();
     void actionAboutHandler();
     void actionAboutQtHandler();
 
@@ -77,6 +78,7 @@ private:
     void initActions();
 
     QAction *actionStayOnTop;
+    QAction *actionChangeTimestampFormat;
     QAction *actionAddNoteList;
     QAction *actionNewLoadDatabase;
     QAction *actionAbout;
@@ -86,6 +88,7 @@ private:
     // dialog
     void openDBDialog();
     void openNoteListCreationDialog();
+    void openChangeTimestampFormatDialog();
 
 };
 #endif // MAINWINDOW_H

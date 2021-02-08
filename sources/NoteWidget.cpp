@@ -1,8 +1,8 @@
 #include "headers/NoteWidget.h"
 #include "ui_NoteWidget.h"
+#include "settings.h"
 
 #include <QRegularExpression>
-#include <QHash>
 #include <QClipboard>
 
 NoteWidget::NoteWidget(QWidget *parent) :
@@ -23,8 +23,7 @@ NoteWidget::~NoteWidget()
 void NoteWidget::updateTimestamp(const QDateTime &time)
 {
     timestamp = time;
-    // TODO make date time format changable
-    ui->labelTimestamp->setText(timestamp.toString("dd.MM.yyyy hh:mm:ss"));
+    ui->labelTimestamp->setText(timestamp.toString(settings::loadSetting(settings::Setting::TimestampFormat).toString()));
 }
 
 QString NoteWidget::getText()

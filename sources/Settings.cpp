@@ -4,7 +4,8 @@ QString settings::settingName(settings::Setting num)
 {
     QStringList settings = {
             "AlwaysOnTop",
-            "DBPath"
+            "DBPath",
+            "TimestampFormat"
     };
     return settings[num];
 }
@@ -49,6 +50,7 @@ QHash<settings::Setting, QVariant> settings::getDefaultSettings()
 
     defaultSettings.insert(Setting::AlwaysOnTop, false);
     defaultSettings.insert(Setting::DBPath, "");
+    defaultSettings.insert(Setting::TimestampFormat, "dd.MM.yyyy hh:mm:ss");
 
     return defaultSettings;
 }

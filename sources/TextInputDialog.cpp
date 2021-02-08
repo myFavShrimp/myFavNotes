@@ -33,3 +33,8 @@ void TextInputDialog::on_lineEditListName_textEdited(const QString &text)
     else
         ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
 }
+
+void TextInputDialog::setText(const QString &text)
+{
+    ui->lineEditListName->setText(text);
+}

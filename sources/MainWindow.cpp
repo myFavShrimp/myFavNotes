@@ -87,6 +87,14 @@ void MainWindow::openNoteListCreationDialog()
     }
 }
 
+void MainWindow::openChangeTimestampFormatDialog()
+{
+    TextInputDialog inputDialog("Change Timestamp Format", "Timestamp Format:", this);
+    inputDialog.setText(settings::loadSetting(settings::Setting::TimestampFormat).toString());
+    if (inputDialog.exec() == QDialog::Accepted)
+        settings::saveSetting(settings::Setting::TimestampFormat, inputDialog.getText());
+}
+
 void MainWindow::changeDatabase(const QString &path)
 {
     settings::saveSetting(settings::Setting::DBPath, path);

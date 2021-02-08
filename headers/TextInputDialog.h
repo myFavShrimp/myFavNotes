@@ -16,6 +16,7 @@ public:
     ~TextInputDialog();
 
     QString getText();
+    void setText(const QString &text);
 
 private slots:
     void on_lineEditListName_textEdited(const QString &text);
