@@ -78,7 +78,8 @@ void MainWindow::actionChangeTimestampFormatHandler()
 
 void MainWindow::actionAboutHandler() {
     QMessageBox::about(this, "About",
-                          "<b>About myFavNotes</b><br><br>"
+                          "<b>About myFavNotes</b><br>"
+                          "<i>Version: 1.2.0</i><br><br>"
                           "Application and app icon made by myFavShrimp with ❤.<br>"
                           "All other icons made by <a href=\"https://www.flaticon.com/authors/pixel-perfect\" title=\"Pixel perfect\">Pixel perfect</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a>.");
 }
