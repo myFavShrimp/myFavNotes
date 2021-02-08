@@ -57,13 +57,15 @@ void MainWindow::actionNewLoadDatabaseHandler()
 
 void MainWindow::actionStayOnTopToggledHandler(const bool &checked)
 {
+    bool windowVisible = isVisible();
     Qt::WindowFlags currentFlags = windowFlags();
     if (checked) {
         setWindowFlags(currentFlags | Qt::X11BypassWindowManagerHint | Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint);
     } else
         setWindowFlags(currentFlags ^ (Qt::X11BypassWindowManagerHint | Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint));
     settings::saveSetting(settings::Setting::AlwaysOnTop, checked);
-    show();
+    if (windowVisible) // prevent crash caused by showing the application before it's fully initialized at startup
+        show();
 }
 
 void MainWindow::actionAboutHandler() {
